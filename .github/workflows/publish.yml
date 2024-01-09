@@ -1,5 +1,6 @@
 name: 发布到中央库
 on:
+  workflow_dispatch:
   release:
     types: [ created ]
 jobs:
