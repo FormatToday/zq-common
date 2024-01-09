@@ -1,4 +1,4 @@
-package cn.zhangqin56.common;
+package cn.zhangqin56.common.web;
 
 public interface GlobalStatusCode {
     StatusCode SUCCESS = new StatusCode(0, "成功");

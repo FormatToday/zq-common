@@ -1,4 +1,4 @@
-package cn.zhangqin56.common;
+package cn.zhangqin56.common.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
