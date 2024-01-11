@@ -80,6 +80,11 @@ public class ObjectFieldsEqualUtils {
         return isSameDataExceptSomeFields(obj1, obj2, null);
     }
 
+    /**
+     * 是否每个字段的值都是相同的
+     *
+     * @author ZhangQin
+     */
     public <T> boolean isSameData(List<T> objs) {
         return isSameDataExceptSomeFields(objs, null);
     }
