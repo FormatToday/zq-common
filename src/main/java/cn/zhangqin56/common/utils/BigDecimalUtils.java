@@ -1,6 +1,7 @@
 package cn.zhangqin56.common.utils;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.zhangqin56.common.enums.CalculateTypeEnum;
 import lombok.experimental.UtilityClass;
 
 import java.math.BigDecimal;
@@ -20,8 +21,8 @@ import java.util.function.Predicate;
 @UtilityClass
 public class BigDecimalUtils {
 
-    public final int DEFAULT_DIVIDE_SCALE = 5;
     public final int DEFAULT_MULTIPLY_SCALE = 2;
+    public final int DEFAULT_DIVIDE_SCALE = 5;
 
     /**
      * 计算传入的BigDecimal数组中所有元素的总和。
@@ -178,12 +179,12 @@ public class BigDecimalUtils {
         return wrapBigDecimal(value).abs().negate();
     }
 
-    public BigDecimal cal(BigDecimal v1, BigDecimal v2, CalculateType type) {
+    public BigDecimal cal(BigDecimal v1, BigDecimal v2, CalculateTypeEnum type) {
         return switch (type) {
             case ADD -> wrapBigDecimal(v1).add(wrapBigDecimal(v2));
             case SUBTRACT -> wrapBigDecimal(v1).subtract(wrapBigDecimal(v2));
             case MULTIPLY, MULTIPLY_CEILING ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_DIVIDE_SCALE, RoundingMode.CEILING);
+                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.CEILING);
             case MULTIPLY_UP ->
                     wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.UP);
             case MULTIPLY_DOWN ->
@@ -209,25 +210,19 @@ public class BigDecimalUtils {
         };
     }
 
-    public enum CalculateType {
-        ADD,
-        SUBTRACT,
-        MULTIPLY,
-        MULTIPLY_UP,
-        MULTIPLY_DOWN,
-        MULTIPLY_CEILING,
-        MULTIPLY_FLOOR,
-        MULTIPLY_HALF_UP,
-        MULTIPLY_HALF_DOWN,
-        MULTIPLY_HALF_EVEN,
-        MULTIPLY_UNNECESSARY,
-        DIVIDE_UP,
-        DIVIDE_DOWN,
-        DIVIDE_CEILING,
-        DIVIDE_FLOOR,
-        DIVIDE_HALF_UP,
-        DIVIDE_HALF_DOWN,
-        DIVIDE_HALF_EVEN,
-        DIVIDE_UNNECESSARY,
+    public BigDecimal add(BigDecimal v1, BigDecimal v2) {
+        return cal(v1, v2, CalculateTypeEnum.ADD);
+    }
+
+    public BigDecimal subtract(BigDecimal v1, BigDecimal v2) {
+        return cal(v1, v2, CalculateTypeEnum.SUBTRACT);
+    }
+
+    public BigDecimal multiply(BigDecimal v1, BigDecimal v2) {
+        return cal(v1, v2, CalculateTypeEnum.MULTIPLY);
+    }
+
+    public BigDecimal divide(BigDecimal v1, BigDecimal v2) {
+        return cal(v1, v2, CalculateTypeEnum.DIVIDE_HALF_UP);
     }
 }
