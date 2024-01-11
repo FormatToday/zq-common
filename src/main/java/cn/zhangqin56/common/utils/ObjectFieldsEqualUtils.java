@@ -88,4 +88,13 @@ public class ObjectFieldsEqualUtils {
     public <T> boolean isSameData(List<T> objs) {
         return isSameDataExceptSomeFields(objs, null);
     }
+
+    /**
+     * 是否每个字段的值都是相同的
+     *
+     * @author ZhangQin
+     */
+    public <T> boolean isSameData(T... objs) {
+        return isSameDataExceptSomeFields(CollUtil.toList(objs), null);
+    }
 }

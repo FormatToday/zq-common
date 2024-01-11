@@ -2,11 +2,13 @@ package cn.zhangqin56.common.utils;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.zhangqin56.common.domain.SysSsoProductEntity;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ObjectFieldsEqualUtilsTest {
     private SysSsoProductEntity obj1;
@@ -37,33 +39,53 @@ class ObjectFieldsEqualUtilsTest {
     @Test
     void isSameDataExceptSomeFields() {
         List<String> excludeFields = List.of("id");
-        Assertions.assertTrue(
+        assertTrue(
                 ObjectFieldsEqualUtils.isSameDataExceptSomeFields(obj1, obj2, excludeFields)
         );
-        Assertions.assertFalse(
+        assertFalse(
                 ObjectFieldsEqualUtils.isSameDataExceptSomeFields(obj1, obj3, excludeFields)
         );
 
         excludeFields = List.of("id", "isAuto");
-        Assertions.assertTrue(
+        assertTrue(
                 ObjectFieldsEqualUtils.isSameDataExceptSomeFields(obj1, obj3, excludeFields)
         );
     }
 
     @Test
     void isSameData() {
-        Assertions.assertTrue(
+        assertTrue(
                 ObjectFieldsEqualUtils.isSameData(obj1, obj2)
         );
 
-        Assertions.assertFalse(
+        assertFalse(
                 ObjectFieldsEqualUtils.isSameData(obj1, obj3)
         );
 
-        Assertions.assertFalse(
+        assertFalse(
                 ObjectFieldsEqualUtils.isSameData(obj2, obj3)
         );
+    }
 
+    @Test
+    void testIsSameDataExceptSomeFields() {
+        List<String> excludeFields = List.of("id");
+        assertFalse(
+                ObjectFieldsEqualUtils.isSameDataExceptSomeFields(List.of(obj1, obj2, obj3), excludeFields)
+        );
+        excludeFields = List.of("id", "isAuto");
+        assertTrue(
+                ObjectFieldsEqualUtils.isSameDataExceptSomeFields(List.of(obj1, obj2, obj3), excludeFields)
+        );
+    }
 
+    @Test
+    void testIsSameData() {
+        assertFalse(
+                ObjectFieldsEqualUtils.isSameData(List.of(obj1, obj2, obj3))
+        );
+        assertFalse(
+                ObjectFieldsEqualUtils.isSameData(obj1, obj2, obj3)
+        );
     }
 }
