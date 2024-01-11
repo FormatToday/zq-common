@@ -55,11 +55,32 @@ public class ObjectFieldsEqualUtils {
     }
 
     /**
+     * 是否每个字段的值都是相同的，可添加例外字段
+     *
+     * @author ZhangQin
+     */
+    public <T> boolean isSameDataExceptSomeFields(List<T> objs, List<String> exceptFieldNames) {
+        if (CollUtil.isEmpty(objs) || objs.size() < 2) {
+            return false;
+        }
+        T obj1 = objs.get(0);
+        boolean ret = true;
+        for (int i = 1; i < objs.size(); i++) {
+            ret = ret && isSameDataExceptSomeFields(obj1, objs.get(i), exceptFieldNames);
+        }
+        return ret;
+    }
+
+    /**
      * 是否每个字段的值都是相同的
      *
      * @author ZhangQin
      */
     public <T> boolean isSameData(T obj1, T obj2) {
         return isSameDataExceptSomeFields(obj1, obj2, null);
+    }
+
+    public <T> boolean isSameData(List<T> objs) {
+        return isSameDataExceptSomeFields(objs, null);
     }
 }
