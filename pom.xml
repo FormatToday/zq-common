@@ -19,6 +19,7 @@
         <module>zq-common-utils</module>
         <module>zq-common-enums</module>
         <module>zq-common-web</module>
+        <module>zq-common-spring-boot</module>
     </modules>
 
     <properties>
@@ -31,28 +32,18 @@
         <junit.version>5.10.1</junit.version>
         <lombok.version>1.18.30</lombok.version>
         <logback.version>1.4.14</logback.version>
+        <spring.boot.version>3.2.0</spring.boot.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>cn.zhanqgin56</groupId>
-                <artifactId>zq-common-utils</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>cn.zhanqgin56</groupId>
-                <artifactId>zq-common-enums</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>cn.zhanqgin56</groupId>
-                <artifactId>zq-common-web</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -80,6 +71,7 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
