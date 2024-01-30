@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.zhangqin56</groupId>
-    <artifactId>zq-common</artifactId>
-    <version>1.0.2</version>
+    <artifactId>zq-common-parent</artifactId>
+    <version>1.0.3</version>
     <name>zq-common</name>
 
     <packaging>pom</packaging>
@@ -16,50 +16,51 @@
     </description>
 
     <modules>
-        <module>zq-common-utils</module>
+        <module>zq-common-all</module>
+        <module>zq-common-bom</module>
         <module>zq-common-enums</module>
-        <module>zq-common-web</module>
         <module>zq-common-spring-boot</module>
+        <module>zq-common-utils</module>
+        <module>zq-common-web</module>
     </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <compile.version>17</compile.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <Automatic-Module-Name>cn.zhangqin56.common</Automatic-Module-Name>
+
         <!-- 其他依赖版本 -->
-        <hutool.version>5.8.25</hutool.version>
         <junit.version>5.10.1</junit.version>
         <lombok.version>1.18.30</lombok.version>
         <logback.version>1.4.14</logback.version>
-        <spring.boot.version>3.2.2</spring.boot.version>
-        <!--        <mybatis.plus.version>3.5.4.1</mybatis.plus.version>-->
-        <mybatis.plus.version>3.3.2</mybatis.plus.version>
+
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
 
-        <dependency>
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-bom</artifactId>
-                <version>${hutool.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
 
             <dependency>
@@ -74,12 +75,6 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
-
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-core</artifactId>
-                <version>${mybatis.plus.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -88,6 +83,38 @@
             <id>release</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.11.0</version>
+                        <configuration>
+                            <source>${compile.version}</source>
+                            <target>${compile.version}</target>
+                            <compilerArgument>-Xlint:unchecked</compilerArgument>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <configuration>
+                            <archive>
+                                <index>true</index>
+                                <manifest>
+                                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                </manifest>
+                                <manifestEntries>
+                                    <Build-OS>${os.name}</Build-OS>
+                                    <Built-By>${user.name}</Built-By>
+                                    <Build-Jdk>${java.version}</Build-Jdk>
+                                    <Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
+                                    <Automatic-Module-Name>${Automatic-Module-Name}</Automatic-Module-Name>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
@@ -101,19 +128,21 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.6.3</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+
+                    <!--                    <plugin>-->
+                    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+                    <!--                        <artifactId>maven-javadoc-plugin</artifactId>-->
+                    <!--                        <version>3.6.3</version>-->
+                    <!--                        <executions>-->
+                    <!--                            <execution>-->
+                    <!--                                <id>attach-javadocs</id>-->
+                    <!--                                <phase>package</phase>-->
+                    <!--                                <goals>-->
+                    <!--                                    <goal>jar</goal>-->
+                    <!--                                </goals>-->
+                    <!--                            </execution>-->
+                    <!--                        </executions>-->
+                    <!--                    </plugin>-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>

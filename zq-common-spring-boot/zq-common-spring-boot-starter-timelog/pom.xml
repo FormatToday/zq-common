@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.zhangqin56</groupId>
         <artifactId>zq-common-spring-boot</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.3</version>
     </parent>
 
     <artifactId>zq-common-spring-boot-starter-timelog</artifactId>
@@ -29,10 +29,6 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

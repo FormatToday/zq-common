@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.zhangqin56</groupId>
-        <artifactId>zq-common</artifactId>
-        <version>1.0.2</version>
+        <artifactId>zq-common-parent</artifactId>
+        <version>1.0.3</version>
     </parent>
 
     <artifactId>zq-common-enums</artifactId>

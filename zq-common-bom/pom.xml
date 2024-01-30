@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.zhangqin56</groupId>
+        <artifactId>zq-common-parent</artifactId>
+        <version>1.0.3</version>
+    </parent>
+
+    <artifactId>zq-common-bom</artifactId>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>cn.zhangqin56</groupId>
+                <artifactId>zq-common-utils</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.zhangqin56</groupId>
+                <artifactId>zq-common-enums</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.zhangqin56</groupId>
+                <artifactId>zq-common-web</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.zhangqin56</groupId>
+                <artifactId>zq-common-spring-boot</artifactId>
+                <version>${project.parent.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-enums</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-web</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-spring-boot</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

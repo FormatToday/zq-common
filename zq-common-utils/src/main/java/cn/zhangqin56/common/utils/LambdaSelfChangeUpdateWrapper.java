@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
  * 指定列自增、自减
  *
  * @author ZhangQin
- * @date 2023/11/16
  */
 @Slf4j
 public class LambdaSelfChangeUpdateWrapper<T> extends LambdaUpdateWrapper<T> {

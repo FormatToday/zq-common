@@ -1,5 +1,7 @@
 package cn.zhangqin56.common.web;
 
+import cn.zhangqin56.common.enums.GlobalStatusCodeEnum;
+import cn.zhangqin56.common.enums.StatusCodeRecord;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,14 +14,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommonResult<T> implements Serializable {
-    private static final StatusCode DEFAULT_SUCCESS_STATUS = GlobalStatusCode.SUCCESS;
-    private static final StatusCode DEFAULT_ERROR_STATUS = GlobalStatusCode.INTERNAL_SERVER_ERROR;
+    private static final StatusCodeRecord DEFAULT_SUCCESS_STATUS = GlobalStatusCodeEnum.SUCCESS;
+    private static final StatusCodeRecord DEFAULT_ERROR_STATUS = GlobalStatusCodeEnum.INTERNAL_SERVER_ERROR;
 
     private Integer code;
     private T data;
     private String msg;
 
-    private static <T> CommonResult<T> getResult(T data, StatusCode status) {
+    private static <T> CommonResult<T> getResult(T data, StatusCodeRecord status) {
         return CommonResult.<T>builder()
                 .data(data)
                 .msg(status.msg())
@@ -36,7 +38,7 @@ public class CommonResult<T> implements Serializable {
     }
 
 
-    public static <T> CommonResult<T> success(T data, StatusCode statusCode) {
+    public static <T> CommonResult<T> success(T data, StatusCodeRecord statusCode) {
         return getResult(data, statusCode);
     }
 
@@ -48,7 +50,7 @@ public class CommonResult<T> implements Serializable {
         return getResult(data, DEFAULT_ERROR_STATUS);
     }
 
-    public static <T> CommonResult<T> error(T data, StatusCode statusCode) {
+    public static <T> CommonResult<T> error(T data, StatusCodeRecord statusCode) {
         return getResult(data, statusCode);
     }
 

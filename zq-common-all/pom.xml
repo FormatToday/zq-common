@@ -9,13 +9,34 @@
         <version>1.0.3</version>
     </parent>
 
-    <artifactId>zq-common-web</artifactId>
+    <artifactId>zq-common-all</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-utils</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>cn.zhangqin56</groupId>
             <artifactId>zq-common-enums</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-web</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-spring-boot-starter-timelog</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
     </dependencies>
+
 </project>
