@@ -33,6 +33,8 @@
         <lombok.version>1.18.30</lombok.version>
         <logback.version>1.4.14</logback.version>
         <spring.boot.version>3.2.2</spring.boot.version>
+        <!--        <mybatis.plus.version>3.5.4.1</mybatis.plus.version>-->
+        <mybatis.plus.version>3.3.2</mybatis.plus.version>
     </properties>
 
     <dependencies>
@@ -73,6 +75,11 @@
                 <scope>test</scope>
             </dependency>
 
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

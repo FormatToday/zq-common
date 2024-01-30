@@ -20,7 +20,6 @@ import java.util.function.Predicate;
  */
 @UtilityClass
 public class BigDecimalUtils {
-
     public final int DEFAULT_MULTIPLY_SCALE = 2;
     public final int DEFAULT_DIVIDE_SCALE = 5;
 
