@@ -30,8 +30,6 @@
         <compile.version>17</compile.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <Automatic-Module-Name>cn.zhangqin56.common</Automatic-Module-Name>
-
         <!-- 其他依赖版本 -->
         <junit.version>5.10.1</junit.version>
         <lombok.version>1.18.30</lombok.version>
@@ -101,16 +99,6 @@
                         <configuration>
                             <archive>
                                 <index>true</index>
-                                <manifest>
-                                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                                </manifest>
-                                <manifestEntries>
-                                    <Build-OS>${os.name}</Build-OS>
-                                    <Built-By>${user.name}</Built-By>
-                                    <Build-Jdk>${java.version}</Build-Jdk>
-                                    <Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
-                                    <Automatic-Module-Name>${Automatic-Module-Name}</Automatic-Module-Name>
-                                </manifestEntries>
                             </archive>
                         </configuration>
                     </plugin>
@@ -129,20 +117,26 @@
                         </executions>
                     </plugin>
 
-                    <!--                    <plugin>-->
-                    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
-                    <!--                        <artifactId>maven-javadoc-plugin</artifactId>-->
-                    <!--                        <version>3.6.3</version>-->
-                    <!--                        <executions>-->
-                    <!--                            <execution>-->
-                    <!--                                <id>attach-javadocs</id>-->
-                    <!--                                <phase>package</phase>-->
-                    <!--                                <goals>-->
-                    <!--                                    <goal>jar</goal>-->
-                    <!--                                </goals>-->
-                    <!--                            </execution>-->
-                    <!--                        </executions>-->
-                    <!--                    </plugin>-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.6.3</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <!--                                <phase>package</phase>-->
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <charset>UTF-8</charset>
+                            <docencoding>UTF-8</docencoding>
+                        </configuration>
+                    </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -157,6 +151,7 @@
                             </execution>
                         </executions>
                     </plugin>
+
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>

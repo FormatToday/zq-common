@@ -64,7 +64,7 @@
 
         <dependency>
             <groupId>cn.zhangqin56</groupId>
-            <artifactId>zq-common-spring-boot</artifactId>
+            <artifactId>zq-common-spring-boot-starter-timelog</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

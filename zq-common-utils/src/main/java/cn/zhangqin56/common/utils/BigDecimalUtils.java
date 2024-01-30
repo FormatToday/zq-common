@@ -15,7 +15,6 @@ import java.util.function.Predicate;
 
 /**
  * BigDecimal 工具类
- *
  */
 @UtilityClass
 public class BigDecimalUtils {
