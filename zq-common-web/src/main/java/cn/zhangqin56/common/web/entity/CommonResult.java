@@ -1,4 +1,4 @@
-package cn.zhangqin56.common.web;
+package cn.zhangqin56.common.web.entity;
 
 import cn.zhangqin56.common.enums.GlobalStatusCodeEnum;
 import cn.zhangqin56.common.enums.StatusCodeRecord;
