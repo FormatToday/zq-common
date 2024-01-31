@@ -25,7 +25,7 @@ public class LambdaSelfChangeUpdateWrapper<T> extends LambdaUpdateWrapper<T> {
      */
     public LambdaSelfChangeUpdateWrapper<T> increase(SFunction<T, ?> columns, Object value) {
         String colStr = super.columnToString(columns);
-        String sql = StrUtil.format("{} = {} + {}", colStr, colStr, formatSql("{0}", value));
+        String sql = StrUtil.format("{} = {} + {}", colStr, colStr, formatSqlMaybeWithParam("{0}", value));
         logger.debug("sql:{}", sql);
         setSql(sql);
 
@@ -38,8 +38,7 @@ public class LambdaSelfChangeUpdateWrapper<T> extends LambdaUpdateWrapper<T> {
      * @param columns 列引用
      */
     public LambdaSelfChangeUpdateWrapper<T> increase(SFunction<T, ?> columns) {
-        increase(columns, 1);
-        return this;
+        return increase(columns, 1);
     }
 
     /**
@@ -50,7 +49,7 @@ public class LambdaSelfChangeUpdateWrapper<T> extends LambdaUpdateWrapper<T> {
      */
     public LambdaSelfChangeUpdateWrapper<T> decrease(SFunction<T, ?> columns, Object value) {
         String colStr = super.columnToString(columns);
-        String sql = StrUtil.format("{} = {} - {}", colStr, colStr, formatSql("{0}", value));
+        String sql = StrUtil.format("{} = {} - {}", colStr, colStr, formatSqlMaybeWithParam("{0}", value));
         logger.debug("sql:{}", sql);
         setSql(sql);
 
@@ -63,8 +62,7 @@ public class LambdaSelfChangeUpdateWrapper<T> extends LambdaUpdateWrapper<T> {
      * @param columns 列引用
      */
     public LambdaSelfChangeUpdateWrapper<T> decrease(SFunction<T, ?> columns) {
-        decrease(columns, 1);
-        return this;
+        return decrease(columns, 1);
     }
 
 }
