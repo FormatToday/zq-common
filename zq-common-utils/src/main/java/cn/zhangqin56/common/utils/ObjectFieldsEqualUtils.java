@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 对象字段比较相等工具类
@@ -32,10 +33,10 @@ public class ObjectFieldsEqualUtils {
         if (CollUtil.isNotEmpty(exceptFieldNames)) {
             fields = fields.stream()
                     .filter(i -> !exceptFieldNames.contains(i.getName()))
-                    .toList();
+                    .collect(Collectors.toList());
         }
 
-        logger.debug("CheckFields:{}", fields.stream().map(Field::getName).toList());
+        logger.debug("CheckFields:{}", fields.stream().map(Field::getName).collect(Collectors.toList()));
         boolean res = true;
 
         // 遍历字段名进行比较

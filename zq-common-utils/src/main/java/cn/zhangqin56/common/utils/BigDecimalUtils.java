@@ -177,34 +177,47 @@ public class BigDecimalUtils {
     }
 
     public BigDecimal cal(BigDecimal v1, BigDecimal v2, CalculateTypeEnum type) {
-        return switch (type) {
-            case ADD -> wrapBigDecimal(v1).add(wrapBigDecimal(v2));
-            case SUBTRACT -> wrapBigDecimal(v1).subtract(wrapBigDecimal(v2));
-            case MULTIPLY, MULTIPLY_CEILING ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.CEILING);
-            case MULTIPLY_UP ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.UP);
-            case MULTIPLY_DOWN ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.DOWN);
-            case MULTIPLY_FLOOR ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.FLOOR);
-            case MULTIPLY_HALF_UP ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.HALF_UP);
-            case MULTIPLY_HALF_DOWN ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.HALF_DOWN);
-            case MULTIPLY_HALF_EVEN ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.HALF_EVEN);
-            case MULTIPLY_UNNECESSARY ->
-                    wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.UNNECESSARY);
-            case DIVIDE_UP -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.UP);
-            case DIVIDE_DOWN -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.DOWN);
-            case DIVIDE_CEILING -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.CEILING);
-            case DIVIDE_FLOOR -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.FLOOR);
-            case DIVIDE_HALF_UP -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.HALF_UP);
-            case DIVIDE_HALF_DOWN -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.HALF_DOWN);
-            case DIVIDE_HALF_EVEN -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.HALF_EVEN);
-            case DIVIDE_UNNECESSARY -> wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.UNNECESSARY);
-        };
+        switch (type) {
+            case ADD:
+                return wrapBigDecimal(v1).add(wrapBigDecimal(v2));
+            case SUBTRACT:
+                return wrapBigDecimal(v1).subtract(wrapBigDecimal(v2));
+            case MULTIPLY:
+            case MULTIPLY_CEILING:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.CEILING);
+            case MULTIPLY_UP:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.UP);
+            case MULTIPLY_DOWN:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.DOWN);
+            case MULTIPLY_FLOOR:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.FLOOR);
+            case MULTIPLY_HALF_UP:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.HALF_UP);
+            case MULTIPLY_HALF_DOWN:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.HALF_DOWN);
+            case MULTIPLY_HALF_EVEN:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.HALF_EVEN);
+            case MULTIPLY_UNNECESSARY:
+                return wrapBigDecimal(v1).multiply(wrapBigDecimal(v2)).setScale(DEFAULT_MULTIPLY_SCALE, RoundingMode.UNNECESSARY);
+            case DIVIDE_UP:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.UP);
+            case DIVIDE_DOWN:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.DOWN);
+            case DIVIDE_CEILING:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.CEILING);
+            case DIVIDE_FLOOR:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.FLOOR);
+            case DIVIDE_HALF_UP:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.HALF_UP);
+            case DIVIDE_HALF_DOWN:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.HALF_DOWN);
+            case DIVIDE_HALF_EVEN:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.HALF_EVEN);
+            case DIVIDE_UNNECESSARY:
+                return wrapBigDecimal(v1).divide(v2, DEFAULT_DIVIDE_SCALE, RoundingMode.UNNECESSARY);
+            default:
+                throw new IllegalStateException("运算类型不合法");
+        }
     }
 
     public BigDecimal add(BigDecimal v1, BigDecimal v2) {

@@ -25,9 +25,9 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <compile.version>17</compile.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <compile.version>1.8</compile.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- 其他依赖版本 -->

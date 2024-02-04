@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.util.StopWatch;
 
-import java.util.concurrent.TimeUnit;
-
 @Slf4j
 @Aspect
 @Configuration
@@ -32,7 +30,7 @@ public class TimeLogAutoConfiguration {
         stopWatch.start(methodName);
         Object res = proceedingJoinPoint.proceed();
         stopWatch.stop();
-        logger.info("【{}ms】方法：{}", stopWatch.prettyPrint(TimeUnit.MILLISECONDS), methodName);
+        logger.info("【{}ms】方法：{}", stopWatch.getTotalTimeMillis(), methodName);
         return res;
     }
 }

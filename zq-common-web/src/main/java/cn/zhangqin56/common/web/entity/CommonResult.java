@@ -24,8 +24,8 @@ public class CommonResult<T> implements Serializable {
     private static <T> CommonResult<T> getResult(T data, StatusCodeRecord status) {
         return CommonResult.<T>builder()
                 .data(data)
-                .msg(status.msg())
-                .code(status.code())
+                .msg(status.getMsg())
+                .code(status.getCode())
                 .build();
     }
 
