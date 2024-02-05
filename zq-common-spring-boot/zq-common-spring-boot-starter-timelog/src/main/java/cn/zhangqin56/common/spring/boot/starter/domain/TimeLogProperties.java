@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @ConfigurationProperties(prefix = "zq.time.log")
-public class TimeLogProperties {
+public final class TimeLogProperties {
     private Boolean enable;
+    private String logTemplate;
 }
