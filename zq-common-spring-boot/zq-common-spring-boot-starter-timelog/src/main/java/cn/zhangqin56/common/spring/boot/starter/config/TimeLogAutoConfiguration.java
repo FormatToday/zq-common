@@ -1,4 +1,4 @@
-package cn.zhangqin56.common.spring.boot.starter;
+package cn.zhangqin56.common.spring.boot.starter.config;
 
 import cn.zhangqin56.common.spring.boot.starter.domain.TimeLogProperties;
 import lombok.RequiredArgsConstructor;

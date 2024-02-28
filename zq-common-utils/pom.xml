@@ -12,7 +12,6 @@
     <artifactId>zq-common-utils</artifactId>
 
     <properties>
-        <hutool.version>5.8.26</hutool.version>
         <mybatis.plus.version>3.5.5</mybatis.plus.version>
     </properties>
 
@@ -27,6 +26,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -37,6 +37,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-core</artifactId>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>
@@ -47,14 +48,6 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-core</artifactId>
                 <version>${mybatis.plus.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-bom</artifactId>
-                <version>${hutool.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

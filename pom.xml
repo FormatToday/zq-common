@@ -34,7 +34,7 @@
         <junit.version>5.10.2</junit.version>
         <lombok.version>1.18.30</lombok.version>
         <slf4j.simple.version>2.0.12</slf4j.simple.version>
-
+        <hutool.version>5.8.26</hutool.version>
     </properties>
 
     <dependencies>
@@ -72,6 +72,14 @@
                 <artifactId>junit-jupiter</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
