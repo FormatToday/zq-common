@@ -19,6 +19,7 @@
 
     <modules>
         <module>zq-common-spring-boot-starter-timelog</module>
+        <module>zq-common-spring-boot-starter-request-log</module>
     </modules>
 
 
