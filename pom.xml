@@ -43,7 +43,7 @@
         <!-- 第三方库依赖版本 -->
         <junit.version>5.10.2</junit.version>
         <lombok.version>1.18.32</lombok.version>
-        <slf4j.simple.version>2.0.12</slf4j.simple.version>
+        <slf4j.simple.version>2.0.13</slf4j.simple.version>
         <hutool.version>5.8.27</hutool.version>
 
         <!-- plugin依赖版本 -->
