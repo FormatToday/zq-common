@@ -9,7 +9,7 @@
         <version>1.0.3</version>
     </parent>
 
-    <artifactId>zq-common-spring-boot-starter-timelog</artifactId>
+    <artifactId>zq-common-spring-boot-starter-time-log</artifactId>
 
     <dependencies>
 

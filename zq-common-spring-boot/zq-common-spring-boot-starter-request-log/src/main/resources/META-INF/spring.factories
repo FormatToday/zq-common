@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.zhangqin56.common.spring.boot.starter.config.WebFilterConfiguration
+  cn.zhangqin56.common.spring.boot.starter.config.WebInterceptorConfiguration

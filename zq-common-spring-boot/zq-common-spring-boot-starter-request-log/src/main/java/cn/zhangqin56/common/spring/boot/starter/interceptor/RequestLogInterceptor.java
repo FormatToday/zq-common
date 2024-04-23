@@ -1,44 +1,35 @@
-package cn.zhangqin56.common.spring.boot.starter.filter;
+package cn.zhangqin56.common.spring.boot.starter.interceptor;
 
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONUtil;
 import cn.zhangqin56.common.spring.boot.starter.domain.RequestLogProperties;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
  * 记录请求日志
  */
 @Slf4j
-public class RequestLogFilter extends HttpFilter {
+public class RequestLogInterceptor implements HandlerInterceptor {
     private final List<String> blackList;
 
-    public RequestLogFilter(RequestLogProperties requestLogProperties) {
+    public RequestLogInterceptor(RequestLogProperties requestLogProperties) {
         this.blackList = requestLogProperties.getBlackList();
         logger.debug("blackList:{}", blackList);
     }
 
     @Override
-    protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if (shouldSkip(request)) {
-            // 不需要记录请求体和响应体
-            chain.doFilter(request, response);
-        } else {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        if (!shouldSkip(request)) {
             // Wrapper 封装 Request 和 Response
             ContentCachingRequestWrapper cachingRequest = new ContentCachingRequestWrapper(request);
             ContentCachingResponseWrapper cachingResponse = new ContentCachingResponseWrapper(response);
-
-            // 继续执行请求链
-            chain.doFilter(cachingRequest, cachingResponse);
 
             // 在请求完成后记录请求、响应日志
             // 请求方法
@@ -50,18 +41,19 @@ public class RequestLogFilter extends HttpFilter {
 
 
             String id = IdUtil.nanoId();
-            logger.info("\nRequest[{}] => {} {}\n{}", id, method, uri, JSONUtil.formatJsonStr(new String(requestContent)));
+            logger.info("\nRequest[{}] ==> {} {}\n{}", id, method, uri, JSONUtil.formatJsonStr(new String(requestContent)));
             // 响应状态
             int status = response.getStatus();
             // 响应体
             byte[] responseContent = cachingResponse.getContentAsByteArray();
 
-            logger.info("\nResponse[{}] <= {}\n{}", id, status, JSONUtil.formatJsonStr(new String(responseContent)));
+            logger.info("\nResponse[{}] <== {}\n{}", id, status, JSONUtil.formatJsonStr(new String(responseContent)));
 
             // 把缓存的响应数据，响应给客户端
             cachingResponse.copyBodyToResponse();
         }
-
+        // 继续执行请求链
+        return true;
     }
 
     private boolean shouldSkip(HttpServletRequest request) {

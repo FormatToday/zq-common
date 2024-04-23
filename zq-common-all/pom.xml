@@ -33,7 +33,13 @@
 
         <dependency>
             <groupId>cn.zhangqin56</groupId>
-            <artifactId>zq-common-spring-boot-starter-timelog</artifactId>
+            <artifactId>zq-common-spring-boot-starter-time-log</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.zhangqin56</groupId>
+            <artifactId>zq-common-spring-boot-starter-request-log</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

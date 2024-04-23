@@ -13,12 +13,8 @@
 
     <artifactId>zq-common-spring-boot</artifactId>
 
-    <properties>
-        <spring.boot.version>2.7.18</spring.boot.version>
-    </properties>
-
     <modules>
-        <module>zq-common-spring-boot-starter-timelog</module>
+        <module>zq-common-spring-boot-starter-time-log</module>
         <module>zq-common-spring-boot-starter-request-log</module>
     </modules>
 

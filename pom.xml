@@ -35,16 +35,10 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <compile.version>1.8</compile.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <compile.version>21</compile.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- 第三方库依赖版本 -->
-        <junit.version>5.10.2</junit.version>
-        <lombok.version>1.18.32</lombok.version>
-        <slf4j.simple.version>2.0.13</slf4j.simple.version>
-        <hutool.version>5.8.27</hutool.version>
 
         <!-- plugin依赖版本 -->
         <plugin.maven-compiler.version>3.13.0</plugin.maven-compiler.version>
@@ -53,6 +47,13 @@
         <plugin.maven-javadoc.version>3.6.3</plugin.maven-javadoc.version>
         <plugin.maven-gpg.version>3.2.4</plugin.maven-gpg.version>
         <plugin.nexus-staging.version>1.6.13</plugin.nexus-staging.version>
+
+        <!-- 第三方库依赖版本 -->
+        <junit.version>5.10.2</junit.version>
+        <lombok.version>1.18.32</lombok.version>
+        <slf4j.simple.version>2.0.13</slf4j.simple.version>
+        <hutool.version>5.8.27</hutool.version>
+        <spring.boot.version>3.2.4</spring.boot.version>
     </properties>
 
     <dependencies>
