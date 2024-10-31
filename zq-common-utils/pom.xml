@@ -12,7 +12,7 @@
     <artifactId>zq-common-utils</artifactId>
 
     <properties>
-        <mybatis.plus.version>3.5.8</mybatis.plus.version>
+        <mybatis.plus.version>3.5.9</mybatis.plus.version>
     </properties>
 
 
