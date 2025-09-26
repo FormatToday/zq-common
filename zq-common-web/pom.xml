@@ -12,7 +12,7 @@
     <artifactId>zq-common-web</artifactId>
 
     <properties>
-        <jackson.version>2.18.2</jackson.version>
+        <jackson.version>2.20.0</jackson.version>
     </properties>
     <dependencies>
 
