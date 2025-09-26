@@ -41,7 +41,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- plugin依赖版本 -->
-        <plugin.maven-compiler.version>3.13.0</plugin.maven-compiler.version>
+        <plugin.maven-compiler.version>3.14.0</plugin.maven-compiler.version>
         <plugin.maven-jar.version>3.4.2</plugin.maven-jar.version>
         <plugin.maven-source.version>3.3.1</plugin.maven-source.version>
         <plugin.maven-javadoc.version>3.11.2</plugin.maven-javadoc.version>
@@ -49,10 +49,10 @@
         <plugin.nexus-staging.version>1.7.0</plugin.nexus-staging.version>
 
         <!-- 第三方库依赖版本 -->
-        <junit.version>5.11.4</junit.version>
+        <junit.version>5.12.1</junit.version>
         <lombok.version>1.18.36</lombok.version>
         <slf4j.simple.version>2.0.17</slf4j.simple.version>
-        <hutool.version>5.8.34</hutool.version>
+        <hutool.version>5.8.36</hutool.version>
         <spring.boot.version>3.2.4</spring.boot.version>
     </properties>
 
