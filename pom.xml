@@ -52,7 +52,7 @@
         <junit.version>5.12.1</junit.version>
         <lombok.version>1.18.36</lombok.version>
         <slf4j.simple.version>2.0.17</slf4j.simple.version>
-        <hutool.version>5.8.36</hutool.version>
+        <hutool.version>5.8.40</hutool.version>
         <spring.boot.version>3.2.4</spring.boot.version>
     </properties>
 
